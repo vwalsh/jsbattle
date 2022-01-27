@@ -15,7 +15,7 @@
     "start": "jsbattle-mock --www ./dist/admin",
     "start:dev": "run-p watch start",
     "clean": "rimraf dist",
-    "lint": "eslint src/",
+    "lint": "npx eslint src/",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "test": "cucumber-js -f ./features/support/SimpleFormatter.js --retry 3 --fail-fast --world-parameters '{\"mockserver\": true}'",

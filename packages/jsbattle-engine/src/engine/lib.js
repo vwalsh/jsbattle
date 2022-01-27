@@ -9,7 +9,9 @@ import UltimateBattleDescriptor from "./UltimateBattleDescriptor.js";
 
 const JsBattleLib = {
   createSimulation: (renderer, debug) => {
+    console.log('renderer debug', renderer, typeof renderer)
     renderer = renderer ? renderer : new Renderer(debug);
+    // renderer = new DebugRenderer(debug)
     let sim = new Simulation(renderer, debug);
     return sim;
   },
@@ -23,6 +25,9 @@ const JsBattleLib = {
   },
 
   createRenderer: (name, debug) => {
+    console.log('createRenderer', name)
+    // name = 'debug'
+
     switch(name) {
       case 'debug':   return new DebugRenderer(debug);
       case 'bw':      return new BWRenderer(debug);

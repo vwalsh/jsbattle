@@ -1,5 +1,6 @@
 
 module.exports = function() {
+  return
   this.logger.info('Starting scheduling loop at ' + this.settings.scheduleInterval + 'ms')
   this.loop = setInterval(async () => {
     try {

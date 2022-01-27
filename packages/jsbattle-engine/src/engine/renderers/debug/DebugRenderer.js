@@ -69,7 +69,7 @@ export default class DebugRenderer extends AbstractPixiRenderer  {
     });
     let msg = "";
     for(i=0; i < scores.length; i++) {
-      msg += scores[i].value.toFixed(3) + " - " + scores[i].name + (scores[i].energy == 0 ? " [X]" : "" ) + "\n";
+      msg += "score: " + scores[i].value.toFixed(3) + " - " + scores[i].name + (scores[i].energy == 0 ? " [X]" : "" ) + "\n";
     }
     this._scoreBoard.text = msg;
   }

@@ -31,8 +31,12 @@ export class SandboxScreen extends React.Component {
       rngSeed: Math.random(),
       winner: {name: '', score: 0},
       loser: {name: '', score: 0},
-      isRunning: true
+      isRunning: true,
+      selectedRenderer: props.renderer !== undefined ? props.renderer : 'brody'
     };
+
+    // this.selectedRenderer = props.renderer ? props.renderer : 'brody'
+    // console.log('props.renderer 1', props.renderer, this.selectedRenderer)
 
     this.liveCode = React.createRef();
     this.aiDefList = [];
@@ -113,6 +117,19 @@ export class SandboxScreen extends React.Component {
     this.props.setSandboxOpponent(opponent.source, opponent.id);
   }
 
+  onRendererChanged(renderer){
+    console.log('props. selectedRenderer', renderer)
+    // this.props.setRenderer(renderer)
+    // this.selectedRenderer = renderer
+
+    let newState = {selectedRenderer: renderer};
+
+    this.setState(newState, ()=>{
+      this.restartBattle()
+    });
+
+  }
+
   onBattleFinish(result) {
     let winner = null;
     let loser = null;
@@ -155,8 +172,10 @@ export class SandboxScreen extends React.Component {
       mode={this.props.mode}
       opponents={opponentList}
       selectedOpponent={selectedOpponent}
+      selectedRenderer={this.state.selectedRenderer}
       onBattleModeChange={(isTeam) => this.props.setSandboxBattleMode(isTeam)}
       onOpponentChange={(opponent) => this.onOpponentChange(opponent)}
+      onRendererChanged={(renderer) => this.onRendererChanged(renderer)}
       onRngLock={(locked) => this.props.lockSandboxRng(locked)}
     />;
   }
@@ -217,6 +236,7 @@ export class SandboxScreen extends React.Component {
             aiDefList={this.aiDefList}
             onCodeChanged={(code) => this.onCodeChanged(code)}
             onFinish={(result) => this.onBattleFinish(result)}
+            renderer={this.state.selectedRenderer}
             extraTabs={[
               {
                 id: 'settings',
@@ -257,6 +277,7 @@ SandboxScreen.defaultProps = {
   updateAiScript: () => {},
   renameAiScript: () => {},
   setSandboxOpponent: () => {},
+  setRenderer: () => {},
   setSandboxBattleMode: () => {},
   lockSandboxRng: () => {},
   notifySandboxEdit: () => {},
@@ -278,6 +299,7 @@ SandboxScreen.propTypes = {
   updateAiScript: PropTypes.func,
   renameAiScript: PropTypes.func,
   setSandboxOpponent: PropTypes.func,
+  setRenderer: PropTypes.func,
   setSandboxBattleMode: PropTypes.func,
   lockSandboxRng: PropTypes.func,
   notifySandboxEdit: PropTypes.func,
@@ -311,6 +333,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(renameAiScript(newName, id, useRemoteService));
   },
   setSandboxOpponent: (type, id) => {
+    dispatch(setSandboxOpponent(type, id));
+  },
+  setRenderer: (type, id) => {
     dispatch(setSandboxOpponent(type, id));
   },
   setSandboxBattleMode: (teamMode) => {

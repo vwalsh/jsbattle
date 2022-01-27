@@ -6,7 +6,7 @@ class LiveCodeCodeTab extends React.Component {
 
 
   render() {
-    return <div style={{marginTop: '0.7em'}}>
+    return <div style={{marginTop: '0.7em', maxHeight: '75vh', overflow: 'scroll'}}>
         <CodeArea
           className="form-control"
           defaultValue={this.props.defaultValue}

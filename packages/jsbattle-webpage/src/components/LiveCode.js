@@ -20,6 +20,8 @@ class LiveCode extends React.Component {
     this.reloadTimeout = null;
     this.reloadCallback = null;
 
+    this.renderer = props.renderer
+
     let aiDefList = (props.code && props.aiDefList.length >= 1) ? this.createAiDefList(props.aiDefList, props.code, props.count) : [];
 
     this.state = {
@@ -253,7 +255,7 @@ class LiveCode extends React.Component {
 }
 
 LiveCode.defaultProps = {
-  renderer: "brody",
+  renderer: "debug",
   aiDefList: [],
   extraTabs: [],
   simQuality: 'auto',

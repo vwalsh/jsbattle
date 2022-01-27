@@ -9,7 +9,7 @@
     "lint": "eslint src/",
     "build": "npm run build:libs && npm run build:docs",
     "build:libs": "build/copy-libs.js",
-    "build:docs": "jsdoc2md --template api-doc-template.hbs -f 'src/**/*' > docs/jsbattle_react_api.md",
+    "build:docs": "npx jsdoc2md --template api-doc-template.hbs -f 'src/**/*' > docs/jsbattle_react_api.md",
     "test": "echo \"Warning: no test script specified\" && exit 0"
   },
   "keywords": [],

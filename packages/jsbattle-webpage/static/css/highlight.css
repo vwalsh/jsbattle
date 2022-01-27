@@ -6,16 +6,20 @@ Ported by Fabrício Tavares de Oliveira
 
 */
 
+.card {
+  background: #777;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #fff;
+  background: #202020;
 }
 
 .hljs,
 .hljs-subst {
-  color: #000;
+  color: #999;
 }
 
 .hljs-string,

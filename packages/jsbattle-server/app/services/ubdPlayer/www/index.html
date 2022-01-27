@@ -28,7 +28,7 @@
           return print({ error: err.message})
         }
 
-        let renderer = JsBattle.createRenderer('void');
+        let renderer = JsBattle.createRenderer('debug');
         let simulation = JsBattle.createSimulation(renderer);
         simulation.setRngSeed(ubd.rngSeed);
         simulation.timeLimit = ubd.timeLimit;

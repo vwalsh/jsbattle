@@ -17,7 +17,7 @@ class DemoApp extends React.Component {
     this.state = {
       aiDefList: [player1, player2],
       speed: "1.0",
-      renderer: "brody",
+      renderer: "debug",
       quality: "auto",
       timeLimit: 30000,
       rngSeed: 123456,

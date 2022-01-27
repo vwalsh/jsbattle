@@ -14,16 +14,21 @@ export default class DebugTankView extends AbstractPixiTankView  {
 
   _createBody() {
     let body = new Graphics();
-    body.lineStyle(1, 0xffff00, 0.8);
-    body.beginFill(0x00ff00, 0.5);
-    body.drawRect(-15, -15, 30, 30);
+    body.lineStyle(1, 0xffff00, 0.8); // left side of tank (red, as airplanes)
+    body.beginFill(0xff3300, 0.75);
+    body.drawRect(-15, -15, 30, 15);
+    body.endFill();
+
+    body.lineStyle(1, 0xffff00, 0.8); // right side of tank (green, as airplanes)
+    body.beginFill(0x00ff00, 0.75);
+    body.drawRect(-15, 0, 30, 15);
     body.endFill();
     return body;
   }
 
   _createGun() {
     let body = new Graphics();
-    body.beginFill(0x00ff00, 0.5);
+    body.beginFill(0xeb7134, 0.5);
     body.lineStyle(1, 0xffff00, 0.8);
     body.drawCircle(0, 0, 10);
     body.drawRect(0, -3, 30, 6);
@@ -46,6 +51,13 @@ export default class DebugTankView extends AbstractPixiTankView  {
     body.lineTo(radarRange, -width);
     body.lineTo(radarRange, width);
     body.lineTo(0, 3);
+    body.endFill();
+
+    // draw radar circle where it's possible to see
+    // body.beginFill(0xff3300, 0.05);
+    body.lineStyle(1, 0xff3300, 0.5);
+    body.drawCircle(0, 0, radarRange);
+    // body.endFill();
     return body;
   }
 

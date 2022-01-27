@@ -11,6 +11,7 @@ class LiveCodeSandboxSettingsTab extends React.Component {
   }
 
   render() {
+    let selectedRenderer = this.props.renderer
     let selectedCategory = this.props.selectedOpponent ? this.props.selectedOpponent.source : 'bundled';
     let opponents = this.props.opponents
       .map((opponent, index) => ({
@@ -35,6 +36,14 @@ class LiveCodeSandboxSettingsTab extends React.Component {
     };
 
     categories = categories.map((item) => <option key={item} value={item}>{categoryLabels[item]}</option>);
+
+    const rendererLabels = [
+      {value:'brody', name:'Default'},
+      {value:'debug', name:'Debug'}
+    ]
+
+    let rendererList =rendererLabels.map((item) => <option key={item.value} value={item.value}>{item.name}</option>)
+
     return <Row>
         <Col sm={12}>
           <div className="card" style={{marginTop: '1em'}}>
@@ -51,6 +60,14 @@ class LiveCodeSandboxSettingsTab extends React.Component {
                     <Col md={7}>
                       <select className="form-control" id="opponent" value={selectedIndex} onChange={(e) => this.props.onOpponentChange(this.props.opponents[e.target.value])}>
                         {opponents}
+                      </select>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <label htmlFor="renderer"><i className="fas fa-vector-square"></i> Renderer</label>
+                      <select className="form-control" id="renderer" value={selectedRenderer} onChange={(e) => this.props.onRendererChanged(e.target.value)}>
+                        {rendererList}
                       </select>
                     </Col>
                   </Row>
