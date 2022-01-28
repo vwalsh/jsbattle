@@ -476,12 +476,14 @@ class Tank {
     self._lastX = self._x;
     self._lastY = self._y;
 
+    // add any state vars here that the Tank should know about!
     self._state = {
       x: self._x,
       y: self._y,
       angle: self._angle,
       energy: self._energy,
       boost: self._boost,
+      speed: self._speed,
       collisions: {
         wall: self._wallHit,
         enemy: self._enemyHit,

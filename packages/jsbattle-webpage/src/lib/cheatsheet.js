@@ -24,6 +24,7 @@ let state = {
   angle: 45.2,
   energy: 100,
   boost: 300,
+  speed: 1.99,
   collisions: {
     enemy: false,
     ally: false,
@@ -38,7 +39,7 @@ let state = {
       x: 39.5,
       y: 74.3,
       angle: 45.2,
-      speed: 23,
+      speed: 0.99,
       energy: 43
     },
     ally: {
@@ -46,7 +47,7 @@ let state = {
       x: 39.5,
       y: 74.3,
       angle: 45.2,
-      speed: 23,
+      speed: 0.99,
       energy: 43
     },
     bullets: [
@@ -55,7 +56,7 @@ let state = {
         x: 94,
         y: 3,
         angle: -43,
-        speed: 45,
+        speed: 4,
         damage: 9
       }
     ]
