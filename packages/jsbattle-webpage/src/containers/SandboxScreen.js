@@ -32,7 +32,8 @@ export class SandboxScreen extends React.Component {
       winner: {name: '', score: 0},
       loser: {name: '', score: 0},
       isRunning: true,
-      selectedRenderer: props.renderer !== undefined ? props.renderer : 'brody'
+      selectedRenderer: props.renderer !== undefined ? props.renderer : 'brody',
+      selectedTimeLimit: 0
     };
 
     // this.selectedRenderer = props.renderer ? props.renderer : 'brody'
@@ -118,16 +119,19 @@ export class SandboxScreen extends React.Component {
   }
 
   onRendererChanged(renderer){
-    console.log('props. selectedRenderer', renderer)
-    // this.props.setRenderer(renderer)
-    // this.selectedRenderer = renderer
-
     let newState = {selectedRenderer: renderer};
 
     this.setState(newState, ()=>{
       this.restartBattle()
     });
+  }
 
+  onTimeLimitChanged(timeLimit){
+    let newState = {selectedTimeLimit: timeLimit};
+
+    this.setState(newState, ()=>{
+      this.restartBattle()
+    });
   }
 
   onBattleFinish(result) {
@@ -173,9 +177,11 @@ export class SandboxScreen extends React.Component {
       opponents={opponentList}
       selectedOpponent={selectedOpponent}
       selectedRenderer={this.state.selectedRenderer}
+      selectedTimeLimit={this.state.selectedTimeLimit}
       onBattleModeChange={(isTeam) => this.props.setSandboxBattleMode(isTeam)}
       onOpponentChange={(opponent) => this.onOpponentChange(opponent)}
       onRendererChanged={(renderer) => this.onRendererChanged(renderer)}
+      onTimeLimitChanged={(timeLimit) => this.onTimeLimitChanged(timeLimit)}
       onRngLock={(locked) => this.props.lockSandboxRng(locked)}
     />;
   }
@@ -230,8 +236,8 @@ export class SandboxScreen extends React.Component {
             code={this.props.script.code}
             name={this.props.script.scriptName}
             rngSeed={this.state.rngSeed}
-            timeLimit={0}
             teamMode={teamMode}
+            timeLimit={this.state.selectedTimeLimit * 1000}
             count={count}
             aiDefList={this.aiDefList}
             onCodeChanged={(code) => this.onCodeChanged(code)}

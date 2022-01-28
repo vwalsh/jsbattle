@@ -11,6 +11,7 @@ class LiveCodeSandboxSettingsTab extends React.Component {
   }
 
   render() {
+    let selectedTimeLimit = this.props.selectedTimeLimit
     let selectedRenderer = this.props.renderer
     let selectedCategory = this.props.selectedOpponent ? this.props.selectedOpponent.source : 'bundled';
     let opponents = this.props.opponents
@@ -42,7 +43,15 @@ class LiveCodeSandboxSettingsTab extends React.Component {
       {value:'debug', name:'Debug'}
     ]
 
-    let rendererList =rendererLabels.map((item) => <option key={item.value} value={item.value}>{item.name}</option>)
+    const rendererList = rendererLabels.map((item) => <option key={item.value} value={item.value}>{item.name}</option>)
+
+    const timeLimitLabels = [
+      {value:0, name:'Unlimited'},
+      {value:30, name:'30 Seconds'},
+      {value:60, name:'60 Seconds'},
+    ]
+
+    const timeLimitOptions = timeLimitLabels.map((item) => <option key={item.value} value={item.value}>{item.name}</option>)
 
     return <Row>
         <Col sm={12}>
@@ -71,6 +80,15 @@ class LiveCodeSandboxSettingsTab extends React.Component {
                       </select>
                     </Col>
                   </Row>
+                  <Row>
+                    <Col>
+                      <label htmlFor="timeLimit"><i className="fas fa-clock"></i> Time Limit</label>
+                      <select className="form-control" id="timeLimit" value={selectedTimeLimit} onChange={(e) => this.props.onTimeLimitChanged(e.target.value)}>
+                        {timeLimitOptions}
+                      </select>
+                    </Col>
+                  </Row>
+
                 </div>
                 <div className="form-group">
                   <label htmlFor="opponent"><i className="fas fa-users-cog"></i> Mode</label>

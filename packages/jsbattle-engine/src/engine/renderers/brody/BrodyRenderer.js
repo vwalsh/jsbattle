@@ -76,6 +76,7 @@ export default class BrodyRenderer extends AbstractPixiRenderer  {
     let directionCorrection = tank.throttle > 0 ? 180 : 0;
     let dirtAngle = (tank.angle+directionCorrection)*(Math.PI/180);
     if(tank.speed > 1) {
+      // add extra effects based on speed of tank
       let corner1X = tank.x + 20*Math.cos(dirtAngle-Math.PI/4) + 7*Math.cos(dirtAngle);
       let corner1Y = tank.y + 20*Math.sin(dirtAngle-Math.PI/4) + 7*Math.sin(dirtAngle);
       let corner2X = tank.x + 20*Math.cos(dirtAngle+Math.PI/4) + 7*Math.cos(dirtAngle);
