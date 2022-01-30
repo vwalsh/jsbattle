@@ -90,3 +90,7 @@ canvas {
 .dropdown-menu {
   background-color: #333;
 }
+
+.ai-table tr td {
+  color: #fff;
+}

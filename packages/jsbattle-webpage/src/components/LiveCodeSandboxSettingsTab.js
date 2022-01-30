@@ -40,6 +40,7 @@ class LiveCodeSandboxSettingsTab extends React.Component {
 
     const rendererLabels = [
       {value:'brody', name:'Default'},
+      {value:'bw', name:'Black/White'},
       {value:'debug', name:'Debug'}
     ]
 
