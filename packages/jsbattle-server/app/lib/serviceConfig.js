@@ -24,7 +24,7 @@ config.data = {
     "gaCode": "",
   },
   "auth": {
-    "enabled": true,
+    "enabled": false,
     "admins": [],
     "providers": []
   },
